@@ -26,7 +26,7 @@ export const Content = () => {
   useEffect(handleIndexProducts, [])
   
   return (
-    <div>
+    <div className="container">
       <ProductsNew onCreateProduct = {handleCreateProduct} />
       <ProductsIndex products = {products}/>
     </div>
