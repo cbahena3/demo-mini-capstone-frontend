@@ -1,3 +1,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+#root {
+  font-family: Lucida Bright, Georgia, serif;
+}
+
+body {
+  background-image: url("/src/assets/concrete_seamless.webp");
+}
