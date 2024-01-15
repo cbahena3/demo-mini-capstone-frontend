@@ -9,6 +9,7 @@ export function ProductsNew(props) {
     event.preventDefault();
     const params = new FormData(event.target)
     props.onCreateProduct(params, () => event.target.reset());
+    window.location.href = "/"
   }
 
   const suppliersIndex = () => {
@@ -18,6 +19,7 @@ export function ProductsNew(props) {
       setSuppliers(response.data)
     })
   }
+  
 
   useEffect(suppliersIndex, [])
 
@@ -26,9 +28,6 @@ export function ProductsNew(props) {
   return(
     <div>
       <h1>New Product</h1>
-      {suppliers.map(supplier => (
-        <p key={supplier.id}>{supplier.name}</p>
-      ))}
       <form onSubmit={handleSubmit}>
           <p>Name: <input type="text" name="name"/></p>
           <p>Price: <input type="text" name="price"/></p>
@@ -37,7 +36,7 @@ export function ProductsNew(props) {
           <p>Image: <input type="text" name="image_id"/></p>
           <select name="supplier" id="suppliers">
             {suppliers.map(supplier => (
-              <option key={supplier.name}>{supplier.name}</option>
+             <option key={supplier.name}>{supplier.name}</option>
           ))}          
         </select>
       <button type="submit">Submit</button>
