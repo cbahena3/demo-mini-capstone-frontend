@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { Link } from "react-router-dom";
 import { LogoutLink } from './LogoutLink';
 

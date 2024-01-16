@@ -1,10 +1,18 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
+
 
 export const ProductsIndex = (props) => {
+
+  const [searchFilter, setSearchFilter] = useState("");
+
+
   return(
     <div>
       <h1>Gym Essentials</h1>
-      {props.products.map(product => (
+      Search filter: <input type="text" value={searchFilter} onChange={(event) => setSearchFilter(event.target.value)} />
+      
+      {props.products.filter((product) => product.name.toLowerCase().includes(searchFilter.toLowerCase())).map(product => (
        <div key = {product.id} className="row row-cols-1 row-cols-md-1 g-4">
           <div className="col">
             <div className="card">
