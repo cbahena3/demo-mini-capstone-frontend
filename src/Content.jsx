@@ -9,6 +9,8 @@ import { Login } from "./Login"
 import { Modal } from "./Modal";
 import { ProductsShow } from "./ProductsShow"
 import { CartedProductsIndex } from "./CartedProductsIndex"
+import { OrdersIndex } from "./OrdersIndex"
+import { OrdersShow } from "./OrdersShow"
 
 export const Content = () => {
   const [products, setProducts] = useState([]);
@@ -68,8 +70,10 @@ export const Content = () => {
       <Route path="/login" element={< Login />} />
       <Route path="/product/new" element={<ProductsNew onCreateProduct ={handleCreateProduct} />}/>
       <Route path="/cart" element={< CartedProductsIndex />} />
+      <Route path="/orders" element={< OrdersIndex />} />
+      <Route path="/orders/:id" element={< OrdersShow />} />
+      <Route path="/" element={< ProductsIndex products = {products} onShowProduct={handleShowProduct} />} />
     </Routes>
-      <ProductsIndex products = {products} onShowProduct={handleShowProduct} />
       <Modal show={isProductsShowVisible} onClose={handleClose}>
       <ProductsShow product={currentProduct} onUpdateProduct={handleUpdateProduct} />
       </Modal>

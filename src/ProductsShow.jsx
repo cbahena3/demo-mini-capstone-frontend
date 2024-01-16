@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 
 export function ProductsShow(props) {
@@ -24,7 +25,7 @@ export function ProductsShow(props) {
         <div>
           Quantity: <input name="quantity" type="text" />
         </div>
-        <button type="submit">Add To Cart</button>
+        <button type="submit" >Add To Cart</button>
       </form>
 
     </div>
