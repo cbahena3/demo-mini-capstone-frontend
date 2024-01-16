@@ -1,7 +1,24 @@
-// import { Link } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import { LogoutLink } from './LogoutLink';
 
 export function Header() {
+  let loggedInStatus;
+
+  if(localStorage.jwt){
+    loggedInStatus = (
+    <>
+      <li className="dropdown-item"><LogoutLink /></li>
+    </>
+    )
+  } else {
+    loggedInStatus = (
+      <>
+        <li><a className="dropdown-item" href="/login">Login</a></li>
+        <li><a className="dropdown-item" href="/signup">Signup</a></li>
+      </>
+    )
+  }
+
   return (
     <header>
       {/* <Link to="/about">About</Link> */}
@@ -30,10 +47,11 @@ export function Header() {
                   More
                 </a>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="/login">Login</a></li>
+                  {/* <li><a className="dropdown-item" href="/login">Login</a></li>
                   <li><a className="dropdown-item" href="/signup">Signup</a></li>
                   <li><hr className="dropdown-divider"/></li>
-                  <li><a className="dropdown-item" href="/LogoutLink">Logout</a></li>
+                  <li className="dropdown-item"><LogoutLink /></li> */}
+                  {loggedInStatus}
                 </ul>
               </li>
             </ul>
