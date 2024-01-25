@@ -7,6 +7,7 @@ export function ProductsShow(props) {
     const params = new FormData(event.target);
     axios.post('http://localhost:3000/carted_products.json', params).then(response => {
       console.log(response.data)
+      props.onClose()
     })
   }
   

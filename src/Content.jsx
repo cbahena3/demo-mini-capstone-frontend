@@ -75,7 +75,7 @@ export const Content = () => {
       <Route path="/" element={< ProductsIndex products = {products} onShowProduct={handleShowProduct} />} />
     </Routes>
       <Modal show={isProductsShowVisible} onClose={handleClose}>
-      <ProductsShow product={currentProduct} onUpdateProduct={handleUpdateProduct} />
+      <ProductsShow product={currentProduct} onUpdateProduct={handleUpdateProduct} onClose={handleClose}/>
       </Modal>
     </div>
   )

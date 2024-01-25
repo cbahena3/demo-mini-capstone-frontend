@@ -3,7 +3,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export function ProductsNew(props) {
-  const [suppliers, setSuppliers] = useState([])
+  const [suppliers, setSuppliers] = useState([]);
+  const [images, setImages] = useState(['']);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,6 +21,10 @@ export function ProductsNew(props) {
     })
   }
   
+  const addImage = () =>{
+    console.log('addding image')
+    setImages([...images, '']);
+  }
 
   useEffect(suppliersIndex, [])
 
@@ -33,7 +38,9 @@ export function ProductsNew(props) {
           <p>Price: <input type="text" name="price"/></p>
           <p>Description: <input type="text" name="description"/></p>
           <p>Inventory: <input type="text" name="inventory"/></p>
-          <p>Image: <input type="text" name="image_id"/></p>
+          {images.map(image => (          
+          <p key={image.url}>Image: <input name="images[]" type="text" /></p>        
+          ))}
           <select name="supplier" id="suppliers">
             {suppliers.map(supplier => (
              <option key={supplier.name}>{supplier.name}</option>
@@ -41,6 +48,7 @@ export function ProductsNew(props) {
         </select>
       <button type="submit">Submit</button>
       </form>
+      <p><button onClick={addImage}>add more images</button></p>
     </div>
   )
 }

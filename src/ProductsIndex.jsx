@@ -3,7 +3,6 @@ import { useState } from "react";
 
 
 export const ProductsIndex = (props) => {
-
   const [searchFilter, setSearchFilter] = useState("");
 
 
@@ -20,6 +19,7 @@ export const ProductsIndex = (props) => {
               <div className="card-body">
                 <h5 className="card-title">{product.name}</h5>
                 <p className="card-text">Price: {product.price}</p>
+                <img width="300px" src={product.images[0] && product.images[0].url} />
                 <p className="card-text">Inventory: {product.inventory}</p>
                 <p className="card-text">Supplier ID: {product.supplier_id}</p>
                 <p className="card-text">Description: {product.description}</p>

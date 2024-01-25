@@ -30,6 +30,7 @@ export function CartedProductsIndex() {
           <p>name: {cartedProduct.product.name}</p>
           <p>price: {cartedProduct.product.price}</p>
           <p>quantity: {cartedProduct.quantity}</p>
+          
           <hr />
         </div>        
       ))}
