@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
+import Stripe from 'stripe'
 
 export function CartedProductsIndex() {
   const [cartedProducts, setCartedProducts] = useState([])
@@ -16,8 +17,36 @@ export function CartedProductsIndex() {
     console.log('creating order....')
     axios.post('http://localhost:3000/orders.json').then(response => {
       console.log(response.data);
+      let stripe = Stripe(import.meta.env.VITE_SOME_KEY)
+      stripe.checkout.sessions.create({        
+        mode: 'payment',
+        payment_method_types: [
+          'card',
+        ],
+        success_url: `http://localhost:5173/`,
+        cancel_url: `http://localhost:5173/`,
+        line_items: [ // all arguments are required
+          {
+            price_data: {
+              unit_amount: response.data.total * 100,
+              currency: 'usd',
+              product_data: {
+                name: 'Test Product'
+              },
+            },
+            quantity: 1,
+          },
+        ],
+      }).then(session => {
+        console.log('printing out the session')
+        console.log(session.url)
+        window.location.href = session.url
+      })
+      // window.location.href = `/orders/${response.data.id}`
+      // window.location.href = "https://buy.stripe.com/test_8wMdTCetX7FxdNe28a"
     })
   }
+
 
   useEffect(getCartedProducts, [])
   
